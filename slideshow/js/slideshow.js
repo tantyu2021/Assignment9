@@ -4,8 +4,9 @@
 var createSlideshow = function () {
     "use strict";
     // PRIVATE VARIABLES AND FUNCTIONS
-    var timer, play = true, nodes, img, stopSlideShow, displayNextImage, setPlayText;
-    
+    var timer, play = true, nodes, img, stopSlideShow, displayNextImage, setPlayText,speed;
+//1t-set default speed 2sec-1t(15)
+    speed = 2000;
     nodes = { image: null, caption: null };
     img = { cache: [], counter: 0 };
     
@@ -31,6 +32,11 @@ var createSlideshow = function () {
     };
     // PUBLIC METHODS THAT HAVE ACCESS TO PRIVATE VARIABLES AND FUNCTIONS
     return {
+//2t-speed: get speed --new publick method-1
+        dospeed: function(speed) {
+            timer = setInterval(displayNextImage, this.speed);
+            return this;
+        },
         loadImages: function (slides) {
             var image, i;
             for (i = 0; i < slides.length; i += 1) {
@@ -46,7 +52,9 @@ var createSlideshow = function () {
                 nodes.image = arguments[0];
                 nodes.caption = arguments[1];
             }
-            timer = setInterval(displayNextImage, 2000);
+            // timer = setInterval(displayNextImage, 2000);
+//3t-set timer- speed
+            timer = setInterval(displayNextImage, speed);
             return this;
         },
         createToggleHandler: function () {
@@ -64,6 +72,15 @@ var createSlideshow = function () {
                 // TOGGLE PLAY 'FLAG'
                 play = !play;
             };
+        },
+//4t-store from user- slideshow speed--new publick method-2
+           userSpeed: function() {
+            var me = this;
+            return function() {
+                stopSlideShow();
+            speed = parseInt(prompt('Enter the speed for slideshow you want'));
+            me.startSlideShow();
+        }
         }
     };
 };
@@ -90,7 +107,8 @@ window.addEventListener("load", function () {
     // PAUSE THE SLIDESHOW
     $("play_pause").onclick = slideshow.createToggleHandler();
 
+//5t-click btn speed & put from user choise userSpeed-15t
+    $("speed").onclick = slideshow.userSpeed();
 
 
-    
 });
