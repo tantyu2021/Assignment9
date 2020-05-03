@@ -10,11 +10,11 @@ var bankprocess = function() {
     msgD = 'Please enter your deposit.';
     msgW = 'Please enter your withdrawal.';
     btitle = 'Table-info. Requared fields.';
-    //name = document.getElementById('name').value;
+    // //name = document.getElementById('name').value;
     name = prompt('Enter your name'); 
-    //deposit = document.getElementById('deposit').value;
+    // //deposit = document.getElementById('deposit').value;
     deposit = prompt('Enter your deposit'); 
-    //withdrawal = document.getElementById('withdrawal').value;
+    // //withdrawal = document.getElementById('withdrawal').value;
     withdrawal = prompt('Enter your withdrawal'); 
 
     //info validation
@@ -29,6 +29,11 @@ var bankprocess = function() {
     if (withdrawal === '') {
         withdrawal = msgW;
 
+    }
+
+    function name() {
+        name = prompt('Enter your name'); 
+        
     }
 
 document.getElementById('nReg').innerHTML = 'Name: ' + name + '<br>';
@@ -88,9 +93,13 @@ function toString() {
     return "Balance: " + this.balance; 
 } 
 var account = new bankAccount(150); 
+// var numD = parseInt(prompt('enter your deposit'));
+// account.deposit(numD);
 account.deposit(100); 
 console.log(account.toString()); 
 //window.document.write("Balance: " + this.balance);
+// var numW = parseInt(prompt('enter your withdrawal'));
+// account.withdraw(numW); 
 account.withdraw(70); 
 console.log(account.toString());
 //window.document.write("Balance: " + this.balance); 

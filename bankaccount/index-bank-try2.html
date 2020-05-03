@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 8/9 - The Bank Account Application - try2</title>
+   <!--  <script src="js/script51-1.js"></script>-->
+</head>
+<body>
+<form action="" id="bankform">
+    <!-- part1 - UI-->
+    <input type="button" id="name" value="Name">
+    <input type="button" id="deposit" value="Deposit">
+    <input type="button" id="withdrawal" value="Withdrawal">
+</form>
+
+<p id="nReg"></p>
+<p id="dReg"></p>
+<p id="wReg"></p>
+<br>
+<h3>Balance:</h3>
+<p id="balance"></p>
+
+<!--
+<div id="bankinfo"></div>
+<p id="uBal"></p>
+<p id="uDep"></p>
+<p id="uWith"></p>
+       <div id="bankregister"></div>
+<h2 id="registr_header">&nbsp;</h2>
+<table id="registr"></table>-->
+
+<script>
+
+//===Part 2 – The Closure Function================
+
+// function bankAccount (ownerName) {
+//     var balance, owner;
+// }
+
+function bankAccount(amount) {
+    this.balance = amount; 
+    this.deposit = deposit; 
+    this.withdraw = withdraw; 
+    this.toString = toString; 
+} 
+function deposit() { 
+     amount = parseInt(prompt('enter your deposit'));
+    document.getElementById('dReg').innerHTML = 'Deposit: ' + amount + '<br>';
+    this.balance += amount; 
+} 
+function withdraw(amount) {
+    amount = parseInt(prompt('enter your withdrawal'));
+    document.getElementById('wReg').innerHTML = 'Withdrawal: ' + amount + '<br>'; 
+    if (amount <= this.balance) { 
+        this.balance -= amount; 
+    } 
+    if (amount > this.balance) { 
+        print("cannot process"); 
+    } 
+} 
+function name() {
+    name = prompt('Enter your name'); 
+    document.getElementById('nReg').innerHTML = 'Name: ' + name + '<br>';
+}
+function toString() { 
+    return "Balance: " + this.balance; 
+} 
+window.addEventListener('load', function() {
+    document.getElementById('name').addEventListener('click', name);
+    document.getElementById('deposit').addEventListener('click', deposit);
+    document.getElementById('withdrawal').addEventListener('click', withdraw);
+});
+
+//  document.getElementById('dReg').innerHTML = 'Deposit: ' + deposit + '<br>';
+
+var account = new bankAccount(150); 
+    // var numD = parseInt(prompt('enter your deposit'));
+    //account.deposit(numD);
+    //var x = deposit();
+//account.deposit(amount); 
+console.log(account.toString()); 
+
+    // var numW = parseInt(prompt('enter your withdrawal'));
+    // account.withdraw(numW); 
+//account.withdraw(amount);
+//console.log(account.toString());
+
+//window.document.write("Balance: " + this.balance); 
+// account.withdraw(8);    
+// console.log(account.toString());
+//window.document.write("Balance: " + this.balance);
+</script>
+</body>
+</html>
